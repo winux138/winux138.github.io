@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(42, 42, 48);
+}
+
+h1 {
+  font-family: monospace;
+  color: rgb(217, 28, 255);
+  font-size: 48px;
+}
