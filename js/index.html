@@ -1,0 +1,20 @@
+<html>
+	<head>
+	<script type="text/javascript">
+		function init()
+		{
+            laDiv3=document.createElement('p');
+            laDiv3.innerHTML = 'YOLOOO!';
+			laDiv1=document.createElement('div');
+			laDiv1.setAttribute('id','div1');
+			laDiv2=document.getElementById('div2');
+            laDiv1.setAttribute('style',"border-color: red; border-style: dotted; height: 50px;width: 50px");
+            laDiv1.appendChild(laDiv3);
+			laDiv2.appendChild(laDiv1);
+		}
+	</script>
+	</head>
+	<body onload='init()'>
+		<div id='div2' style="border-color:black; border-style: solid; height: 80px;width: 80px;"></div>
+	</body>
+</html>
