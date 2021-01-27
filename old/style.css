@@ -1,0 +1,19 @@
+body {
+  background-color: rgb(42, 42, 48);
+}
+
+canvas {
+  background-color: rgb(70, 70, 70);
+}
+
+h1 {
+  font-family: monospace;
+  color: rgb(217, 28, 255);
+  font-size: 42px;
+}
+
+h2 {
+  font-family: monospace;
+  color: white;
+  font-size: 40px;
+}
