@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <!--script src="script.js"></script-->
+    <script>
+        var canvas;
+        var ctx;
+
+        class Carre {
+            constructor(x, y, side, color, velocity, delay){
+                this.x = x;
+                this.y = y;
+                this.side = side;
+                this.color = color;
+                this.velocity = velocity;
+                this.delay = delay;
+            }
+
+            clear(){
+                ctx.clearRect(this.x, this.y, this.side, this.side);
+            }
+
+            update(){
+                if(this.delay <= 0){
+                    this.x += this.velocity;
+                }
+                else {
+                    (this.delay)--;
+                }
+            }
+
+            draw(){
+                if(this.delay <= 0){
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, this.side, this.side);
+                }
+            }
+
+        }
+
+        var carre1 = new Carre(-40, 275, 50, "red", 10, 0);
+        var carre2 = new Carre(-40, 275, 50, "yellow", 10, 10);
+        var carre3 = new Carre(-40, 275, 50, "blue", 10, 20);
+
+        var initSquareIntervId;
+        var drawSquareIntervId;
+
+        // var timerInt = 10;
+        // var timerIntervId;
+
+        function init(){
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            // delay 4000 ms
+            initSquareIntervId = setInterval(initDelay, 4000);
+        }
+
+        function initDelay(){
+            clearInterval(initSquareIntervId);
+            // moving the square
+            drawSquareIntervId = setInterval(drawMovingSquare, 100);
+        }
+
+
+        function drawMovingSquare(){
+            carre1.clear();
+            carre3.clear();
+            carre2.clear();
+
+            carre1.update();
+            carre2.update();
+            carre3.update();
+
+            carre1.draw();
+            carre2.draw();
+            carre3.draw();
+
+            if (carre3.x + carre3.side >= canvas.width){
+                clearInterval(drawSquareIntervId);
+            }
+        }
+
+
+        /** merci google */
+        function sleep(miliseconds){
+            var waitUntil = new Date().getTime() + miliseconds;
+            while(new Date().getTime() < waitUntil) true;
+        }
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <!--div id="timer">10</div-->
+
+</body>
+</html>

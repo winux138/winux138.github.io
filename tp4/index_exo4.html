@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <!--script src="script.js"></script-->
+    <script>
+        var canvas;
+        var ctx;
+        var circleIntervId;
+
+        var XHR;
+
+        var int = {int: 600};
+
+        function init() {
+            // init canvas
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+
+            circleIntervId = setInterval(getCoord, 1000);
+        }
+
+        function getCoord(){
+            fetch("https://stwom.herokuapp.com/600")
+            .then(
+                response => {
+                    if(response.ok) return response.json();
+                }
+            )
+            .then(
+                json => {
+                    drawCircle(json);
+                }
+            )
+        }
+
+        function drawCircle(point) {
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 5, 0, 2 * Math.PI, false);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            // canvas.ctx.endPath();
+        }
+
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+</body>
+
+</html>
