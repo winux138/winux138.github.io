@@ -25,7 +25,7 @@ var rondAr = [];
 var intervIdAr = [];
 var workerAr = [];
 for (var i = 0; i < 10; ++i){
-    rondAr.push(new Rond(-1, -1, 20 * Math.random(), "#" + ((1<<24)*Math.random() | 0).toString(16)));
+    rondAr.push(new Rond(-1, -1, 4 + 16 * Math.random(), "#" + ((1<<24)*Math.random() | 0).toString(16)));
 }
 
 if (window.Worker) {
