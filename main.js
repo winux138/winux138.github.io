@@ -16,10 +16,10 @@ class Rond {
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var monWorker;
-var IntervId;
 
 var rond1 = new Rond(-1, -1, 10, "red");
+var intervId1;
+var worker1;
 
 var rondAr = [];
 var intervIdAr = [];
@@ -29,18 +29,18 @@ for (var i = 0; i < 10; ++i){
 }
 
 if (window.Worker) {
-    monWorker = new Worker('worker.js');
+    worker1 = new Worker('worker.js');
 
 
-    monWorker.onmessage = function (e) {
+    worker1.onmessage = function (e) {
         console.log('Message received from worker');
         rond1.x = e.data[0];
         rond1.y = e.data[1];
         rond1.draw();
-        monWorker.terminate();
+        worker1.terminate();
     }
 
-    IntervId = setInterval(drawCircle(IntervId), 500 + 1000 * Math.random());
+    intervId1 = setInterval(drawCircle(intervId1, worker1), 500 + 1000 * Math.random());
 
 
     draw10more();
@@ -49,9 +49,9 @@ if (window.Worker) {
     console.log("[ERREUR] pas possible d'utiliser des worker");
 }
 
-function drawCircle(IntervId) {
-    clearInterval(IntervId);
-    monWorker.postMessage([canvas.width, canvas.height]);
+function drawCircle(intervId, worker) {
+    clearInterval(intervId);
+    worker.postMessage([canvas.width, canvas.height]);
     console.log('Message envoyé au worker');
 }
 
@@ -66,7 +66,7 @@ function draw10more() {
             workerAr[i].terminate();
         }
     
-        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i]), 1500 + 1000 * Math.random());
+        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 1500 + 1000 * Math.random());
     }
 
 }
