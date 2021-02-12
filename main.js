@@ -37,7 +37,6 @@ if (window.Worker) {
         rond1.x = e.data[0];
         rond1.y = e.data[1];
         rond1.draw();
-        worker1.terminate();
     }
 
     intervId1 = setInterval(drawCircle(intervId1, worker1), 500 + 1000 * Math.random());
@@ -63,7 +62,6 @@ function draw10more() {
             rondAr[i].x = e.data[0];
             rondAr[i].y = e.data[1];
             rondAr[i].draw();
-            workerAr[i].terminate();
         }
     
         intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 1500 + 1000 * Math.random());
