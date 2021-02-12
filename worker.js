@@ -1,14 +1,22 @@
-onmessage = function(e) {
-    // je recois canvas.width et canvas.height
-    console.log('Message reçu depuis le script principal.');
+let width;
+let height;
+let x;
+let y;
+
+onmessage = function (e) {
+    // init du worker
     width = e.data[0];
     height = e.data[1];
 
-    // traitement
-    let x = width * Math.random();
-    let y = height * Math.random();
+    interval = setInterval(monWorker, 1000);
+}
 
-    // je renvois les coords random
-    console.log('Envoi du message de retour au script principal');
-    postMessage([x, y]);
-  }
+function monWorker() {
+    clearInterval(interval);
+    if (Math.random() > 0.8) {
+        x = Math.random() * width;
+        y = Math.random() * height;
+        worker.postMessage([x, y]);
+    }
+    interval = setInterval(monWorker, 1000);
+}

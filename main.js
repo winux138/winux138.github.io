@@ -1,5 +1,4 @@
-// definition classes
-
+// definition classe
 class Rond {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -39,19 +38,8 @@ if (window.Worker) {
             rondAr[i].y = e.data[1];
             rondAr[i].draw();
         }
-
-        intervIdAr[i] = setInterval(loopCircle, 1000, intervIdAr[i], workerAr[i]);
     }
 
 } else {
     console.log("[ERREUR] pas possible d'utiliser des worker");
-}
-
-function loopCircle(intervId, worker) {
-    clearInterval(intervId);
-    if (Math.random() > 0.8) {
-        worker.postMessage([canvas.width, canvas.height]);
-        console.log('Message envoyé au worker');
-    }
-    intervId = setInterval(loopCircle, 1000, intervId, worker);
 }
