@@ -38,6 +38,9 @@ if (window.Worker) {
             rondAr[i].y = e.data[1];
             rondAr[i].draw();
         }
+
+
+        workerAr[i].postMessage([canvas.width, canvas.height]);
     }
 
 } else {
