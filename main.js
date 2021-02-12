@@ -40,7 +40,7 @@ if (window.Worker) {
             rondAr[i].draw();
         }
 
-        intervIdAr[i] = setInterval(loopCircle(intervIdAr[i], workerAr[i]), 1000);
+        intervIdAr[i] = setInterval(loopCircle, 1000, intervIdAr[i], workerAr[i]);
     }
 
 } else {
@@ -53,5 +53,5 @@ function loopCircle(intervId, worker) {
         worker.postMessage([canvas.width, canvas.height]);
         console.log('Message envoyé au worker');
     }
-    intervId = setInterval(loopCircle(intervId, Worker), 1000);
+    intervId = setInterval(loopCircle, 1000, intervId, Worker);
 }
