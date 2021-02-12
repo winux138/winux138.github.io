@@ -65,7 +65,7 @@ function draw10more() {
             rondAr[i].draw();
         }
 
-        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 500 + 1000 * Math.random());
+        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 1500 + 1000 * Math.random());
     }
 
 }
