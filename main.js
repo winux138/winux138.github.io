@@ -53,5 +53,5 @@ function loopCircle(intervId, worker) {
         worker.postMessage([canvas.width, canvas.height]);
         console.log('Message envoyé au worker');
     }
-    intervId = setInterval(loopCircle, 1000, intervId, Worker);
+    intervId = setInterval(loopCircle, 1000, intervId, worker);
 }
