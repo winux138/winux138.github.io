@@ -24,8 +24,8 @@ var worker1;
 var rondAr = [];
 var intervIdAr = [];
 var workerAr = [];
-for (var i = 0; i < 10; ++i){
-    rondAr.push(new Rond(-1, -1, 4 + 16 * Math.random(), "#" + ((1<<24)*Math.random() | 0).toString(16)));
+for (var i = 0; i < 10; ++i) {
+    rondAr.push(new Rond(-1, -1, 4 + 16 * Math.random(), "#" + ((1 << 24) * Math.random() | 0).toString(16)));
 }
 
 if (window.Worker) {
@@ -37,12 +37,13 @@ if (window.Worker) {
         rond1.x = e.data[0];
         rond1.y = e.data[1];
         rond1.draw();
+
+        draw10more();
     }
 
     intervId1 = setInterval(drawCircle(intervId1, worker1), 500 + 1000 * Math.random());
 
 
-    draw10more();
 
 } else {
     console.log("[ERREUR] pas possible d'utiliser des worker");
@@ -55,7 +56,7 @@ function drawCircle(intervId, worker) {
 }
 
 function draw10more() {
-    for (let i = 0; i < 10; ++i){
+    for (let i = 0; i < 10; ++i) {
         workerAr.push(new Worker('worker.js'));
         workerAr[i].onmessage = function (e) {
             console.log('Message received from worker ' + i);
@@ -63,8 +64,8 @@ function draw10more() {
             rondAr[i].y = e.data[1];
             rondAr[i].draw();
         }
-    
-        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 1500 + 1000 * Math.random());
+
+        intervIdAr[i] = setInterval(drawCircle(intervIdAr[i], workerAr[i]), 500 + 1000 * Math.random());
     }
 
 }
