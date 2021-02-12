@@ -16,7 +16,7 @@ function monWorker() {
     if (Math.random() > 0.8) {
         x = Math.random() * width;
         y = Math.random() * height;
-        worker.postMessage([x, y]);
+        postMessage([x, y]);
     }
     interval = setInterval(monWorker, 1000);
 }
