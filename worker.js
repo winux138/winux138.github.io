@@ -5,8 +5,8 @@ onmessage = function(e) {
     height = e.data[1];
 
     // traitement
-    x = width * Math.random();
-    y = height * Math.random();
+    let x = width * Math.random();
+    let y = height * Math.random();
 
     // je renvois les coords random
     console.log('Envoi du message de retour au script principal');
