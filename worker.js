@@ -8,15 +8,13 @@ onmessage = function (e) {
     width = e.data[0];
     height = e.data[1];
 
-    interval = setInterval(monWorker, 1000);
+    interval = setInterval(monWorker, 500 + Math.random() * 1000);
 }
 
 function monWorker() {
     clearInterval(interval);
-    if (Math.random() > 0.8) {
-        x = Math.random() * width;
-        y = Math.random() * height;
-        postMessage([x, y]);
-    }
-    interval = setInterval(monWorker, 1000);
+    x = Math.random() * width;
+    y = Math.random() * height;
+    postMessage([x, y]);
+    interval = setInterval(monWorker, 500 + Math.random() * 1000);
 }
